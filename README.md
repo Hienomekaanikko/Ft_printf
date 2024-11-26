@@ -50,7 +50,7 @@ va_end(args)
 
 Pretty cool huh?
 
-## Hexadecimal Conversion
+## 🔢 Hexadecimal Conversion
 
 Working with hexadecimals, was very similar to how I learned to recursively convert integers to ascii during the piscine. Instead of calling recursively:
 
