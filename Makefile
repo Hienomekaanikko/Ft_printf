@@ -4,10 +4,10 @@ SRC = ft_write_chr.c ft_printf.c ft_itoa.c ft_write_nbrs.c ft_utoa.c ft_write_he
 OBJS = $(SRC:.c=.o)
 NAME = libftprintf.a
 
-all: $(NAME)
-
 $(NAME): $(OBJS)
 	ar rcs $@ $^
+
+all: $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -16,7 +16,9 @@ clean:
 	rm -f $(OBJS)
 
 fclean:
-	rm -f $(OBJS) $(NAME)
+	rm -f $(NAME)
+
+re: fclean all
 
 .PHONY:
-	all clean fclean
+	all clean fclean re
