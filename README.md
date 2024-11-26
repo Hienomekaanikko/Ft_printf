@@ -1,8 +1,8 @@
-# Ft_printf Project
+# 🖨️ Ft_printf
 
 Ft_printf is like a lite version of printf in C. The idea was to replicate the behaviour of standard printf as closly as possible, except for buffer management.
 
-## Formats
+## 📊 Formats
 
 | Format | Description |
 |--------|-------------|
@@ -16,11 +16,12 @@ Ft_printf is like a lite version of printf in C. The idea was to replicate the b
 | `%X` | write upper case hexadecimal of an unsigned integer |
 | `%%` | write % if called '%%' |
 
+🛠️
 I created a function ft_printf, which uses va_list to go through arguments of user input. (as in prototype: int    ft_printf(const char *, ...); I use while-loop to go thorugh the input string,
 and every time '%' is encountered, it checks the next letter which is or isnt one of the formats shown above. Then it goes into a format function, through which the input will be 
 written according to the format. Length of the string will be returned in the end, which also depends on what formats the user wanted to output.
 
-## New things? 
+## 💡 New things? 
 
 Va_list was a cool new thing. If the number of arguments is not known, we can use that to just go through all of the arguments and use them as needed. First it's declared just like
 any variable. For example:
