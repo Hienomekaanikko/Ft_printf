@@ -64,11 +64,3 @@ void ft_format(va_list *args, const char format)
 
 Testing is crucial! Stay tuned for some awesome test cases to ensure your ft_printf is rock-solid.
 
-Citations:
-[1] https://stackoverflow.com/questions/51956361/custom-css-file-for-readme-md-in-a-github-repo
-[2] https://github.com/darsaveli/Readme-Markdown-Syntax
-[3] https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
-[4] https://pragmaticpineapple.com/adding-custom-html-and-css-to-github-readme/
-[5] https://dev.to/tolentinoel/show-your-style-on-your-github-readme-2129
-[6] https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github
-[7] https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles
