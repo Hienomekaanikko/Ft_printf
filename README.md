@@ -1,6 +1,6 @@
 # 🖨️ Ft_printf: A Lite Version of Printf in C
 
-Ft_printf replicates the behavior of standard printf, minus buffer management. Here's a stylish overview:
+Ft_printf replicates the behavior of standard printf, minus buffer management.
 
 ## 📊 Supported Formats
 
