@@ -25,7 +25,7 @@ Ft_printf replicates the behavior of standard printf, minus buffer management.
 
 ## 🆕 New Concepts
 
-### 1. Va_list Magic ✨
+### 1. Va_list ✨
 
 ```c
 va_list args;
