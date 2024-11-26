@@ -1,66 +1,95 @@
-# 🖨️ Ft_printf: A Lite Version of Printf in C
+# Ft_printf Project
 
-Ft_printf replicates the behavior of standard printf, minus buffer management.
+Ft_printf is like a lite version of printf in C. The idea was to replicate the behaviour of standard printf as closly as possible, except for buffer management.
 
-## 📊 Supported Formats
+## Formats
 
 | Format | Description |
 |--------|-------------|
-| `%c`   | Write character |
-| `%s`   | Write string |
-| `%p`   | Write pointer address |
-| `%d`   | Write integer |
-| `%i`   | Write integer (differs from %d when used with scanf) |
-| `%u`   | Write unsigned integer |
-| `%x`   | Write lowercase hexadecimal of an unsigned integer |
-| `%X`   | Write uppercase hexadecimal of an unsigned integer |
-| `%%`   | Write % character |
+| `%c` | write character |
+| `%s` | write string |
+| `%p` | write pointer address |
+| `%d` | write integer |
+| `%i` | write integer (difference when using with scanf) |
+| `%u` | write unsigned integer |
+| `%x` | write lower case hexadecimal of an unsigned integer |
+| `%X` | write upper case hexadecimal of an unsigned integer |
+| `%%` | write % if called '%%' |
 
-## 🛠️ Implementation Details
+I created a function ft_printf, which uses va_list to go through arguments of user input. (as in prototype: int    ft_printf(const char *, ...); I use while-loop to go thorugh the input string,
+and every time '%' is encountered, it checks the next letter which is or isnt one of the formats shown above. Then it goes into a format function, through which the input will be 
+written according to the format. Length of the string will be returned in the end, which also depends on what formats the user wanted to output.
 
-- Uses `va_list` to handle variable arguments
-- Prototype: `int ft_printf(const char *, ...);`
-- Iterates through input string, processing format specifiers
-- Returns the length of the formatted output
+## New things? 
 
-## 🆕 New Concepts
-
-### 1. Va_list ✨
+Va_list was a cool new thing. If the number of arguments is not known, we can use that to just go through all of the arguments and use them as needed. First it's declared just like
+any variable. For example:
 
 ```c
-va_list args;
-va_start(args, str);
-// Use va_arg(args, type) to access arguments
-va_end(args);
+va_list  args;
 ```
 
-### 2. Hexadecimal Conversion 🔢
+Then we initialize the list with:
 
-Similar to decimal to ASCII conversion, but with base 16:
+```c
+va_start(args, (and for example 'str' here, depending on how you named the first parameter in the prototype));
+```
+
+To move to the next item in the va_list, we just call:
+
+```c
+va_args(args, type of the argument we want to retrieve)
+```
+
+To end going through the list, we call:
+
+```c
+va_end(args)
+```
+
+Pretty cool huh?
+
+## Hexadecimal Conversion
+
+Working with hexadecimals, was very similar to how I learned to recursively convert integers to ascii during the piscine. Instead of calling recursively:
+
+```c
+nbr / 10
+nbr % 10
+```
+
+We do:
 
 ```c
 nbr / 16
 nbr % 16
 ```
 
-## 💡 Key Insight
-
-When passing `va_list` to helper functions, use the address:
-
-```c
-ft_format(&args, str[++i]);
-```
-
-And in the helper function:
+There's much more into that but I don't have time right now. One thing I'd like to add, I struggled for hours with why i had issues with multiple inputs such as %d %c %c %c, because
+with that the output was always just the same. I had misunderstood how va_args worked when jumping into a helper function. Of course I had to make sure I work with the original 
+memory address of args! Lets say I originally had this:
 
 ```c
-void ft_format(va_list *args, const char format)
-{
-    ft_write_string(va_arg(*args, char *));
-}
+va_start(args, str);
 ```
 
-## 🧪 Testing
+and I was calling my formating helper function like this:
 
-Testing is crucial! Stay tuned for some awesome test cases to ensure your ft_printf is rock-solid.
+```c
+ft_format(args, str[++i]);
+```
 
+in which I was working like this
+
+function itself: ft_format(va_list args, const char format)
+and what I called inside it: ft_write_string(va_arg(args, char *));
+
+What should've been was: 
+
+```c
+va_start(&args, str);
+ft_format(va_list *args, const char format)
+ft_write_string(va_arg(*args, char *));
+```
+
+Oh well, basic stuff. But fun project indeed, I'll be coming up with some test stuff because testing is super important thing in coding.
