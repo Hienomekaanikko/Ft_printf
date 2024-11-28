@@ -7,6 +7,10 @@ int	main(void)
 	int	i;
 	int	d;
 	void *p;
+	void *add;
+	void *ptr;
+	void *add2;
+	void *ptr2;
 	unsigned int	x;
 	unsigned int	X;
 	unsigned int	u;
@@ -16,6 +20,10 @@ int	main(void)
 	i = 1;
 	d = 1;
 	p = &i;
+	add = (void *)42;
+	ptr = (void *)NULL;
+	add2 = &i;
+	ptr2 = &d;
 	u = 123325435;
 	x = 123456789;
 	X = 123456789;
@@ -40,14 +48,15 @@ int	main(void)
 	printf("printf X:\n %X %X %X %X %X\n", 123456789, 123, -123, -3, 0);
 	ft_printf("ft_printf X:\n %X %X %X %X %X\n", 123456789, 123, -123, -3, 0);
 
-	printf("printf p:\n %p %p\n", &i, &d);
-	ft_printf("ft_printf p:\n %p %p\n", &i, &d);
+	printf("printf p addressess:\n %p %p\n", add, ptr);
+	ft_printf("ft_printf p addressess:\n %p %p\n", add, ptr);
+	printf("printf p addressess:\n %p %p\n", add2, ptr2);
+	ft_printf("ft_printf p addressess:\n %p %p\n", add2, ptr2);
+	printf("printf NULL p:\n %p\n", (void*)NULL);
+	ft_printf("ft_printf NULL p:\n %p\n", (void*)NULL);
 
 	printf("printf percent: %%\n");
 	ft_printf("ft_printf percent: %%\n");
-
-	printf("printf random: \n%    d\n", 1234);
-	ft_printf("ft_printf random: \n%    d\n", 1234);
 
 	printf("printf mix of specifiers: \n%d %u %s %x %X %p %% %i\n", 123, 123, "Hellohello", 123456789, 123456789, &i, 123456);
 	ft_printf("ft_printf mix of specifiers: \n%d %u %s %x %X %p %% %i\n", 123, 123, "Hellohello", 123456789, 123456789, &i, 123456);

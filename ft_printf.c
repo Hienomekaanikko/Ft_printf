@@ -6,7 +6,7 @@
 /*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:43:36 by msuokas           #+#    #+#             */
-/*   Updated: 2024/11/28 15:34:23 by msuokas          ###   ########.fr       */
+/*   Updated: 2024/11/28 15:42:58 by msuokas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ static int	ft_format(va_list *args, const char format)
 	else
 		write(1, "%", 1);
 	return (total_length);
-}
-int	skip_spaces(const char *str, int i)
-{
-	while (str[i] == ' ')
-		i++;
-	return (i);
 }
 
 int	ft_printf(const char *str, ...)
