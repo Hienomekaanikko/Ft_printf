@@ -51,7 +51,8 @@ int	ft_put_ptr(uintptr_t n)
 	return (0);
 }
 
-int ft_write_ptr(uintptr_t ptr) {
+int ft_write_ptr(uintptr_t ptr) 
+{
 	int len;
 
 	if (ptr == 0)
