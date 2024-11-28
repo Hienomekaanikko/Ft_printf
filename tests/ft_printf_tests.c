@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <limits.h>
+#include "../ft_printf.h"
+
+int	main(void)
+{
+	int	i;
+	int	d;
+	void *p;
+	unsigned int	x;
+	unsigned int	X;
+	unsigned int	u;
+	char	c;
+	char	*s;
+
+	i = 1;
+	d = 1;
+	p = &i;
+	u = 123325435;
+	x = 123456789;
+	X = 123456789;
+	c = 'a';
+	s = "HELLOOO";
+
+	printf("printf d:\n %d %d %d %d %d\n", -1, 0, INT_MIN, INT_MAX, 010);
+	ft_printf("ft_printf d:\n %d %d %d %d %d\n", -1, 0, INT_MIN, INT_MAX, 010);
+
+	printf("printf d:\n %i %i %i %i %i\n", -1, 0, INT_MIN, INT_MAX, 010);
+	ft_printf("ft_printf d:\n %i %i %i %i %i\n", -1, 0, INT_MIN, INT_MAX, 010);
+
+	printf("printf u:\n %u %u %u %u\n", -1, -1000, 010, INT_MIN);
+	ft_printf("ft_printf u:\n %u %u %u %u\n", -1, -1000, 010, INT_MIN);
+
+	printf("printf s\n: %s %s\n", "Hello", "1234");
+	ft_printf("ft_printf s\n: %s %s\n", "Hello", "1234");
+
+	printf("printf x:\n %x %x %x %x %x\n", 123456789, 123, -123, -3, 0);
+	ft_printf("ft_printf x:\n %x %x %x %x %x\n", 123456789, 123, -123, -3, 0);
+
+	printf("printf X:\n %X %X %X %X %X\n", 123456789, 123, -123, -3, 0);
+	ft_printf("ft_printf X:\n %X %X %X %X %X\n", 123456789, 123, -123, -3, 0);
+
+	printf("printf p:\n %p %p\n", &i, &d);
+	ft_printf("ft_printf p:\n %p %p\n", &i, &d);
+
+	printf("printf percent: %%\n");
+	ft_printf("ft_printf percent: %%\n");
+
+	printf("printf random: \n%    d\n", 1234);
+	ft_printf("ft_printf random: \n%    d\n", 1234);
+
+	printf("printf mix of specifiers: \n%d %u %s %x %X %p %% %i\n", 123, 123, "Hellohello", 123456789, 123456789, &i, 123456);
+	ft_printf("ft_printf mix of specifiers: \n%d %u %s %x %X %p %% %i\n", 123, 123, "Hellohello", 123456789, 123456789, &i, 123456);
+
+	printf("printf count: %i\n", printf("Hello it's %dth of %s !\n", 27, "November"));
+	ft_printf("ft_printf count: %i\n", ft_printf("Hello it's %dth of %s !\n", 27, "November"));
+
+	printf("printf: \nHello, here is an integer: %d, here is another integer: %i, here is a character: %c here is an unsigned int: %u\n"
+			"here is a string: %s, here is a lowercase hexadecimal: %x, here is an uppercase hexadecimal: %X,\n"
+			"here is a pointer address %p\n",
+			d, i, c, u, s, x, X, p);
+	ft_printf("ft_printf: \nHello, here is an integer: %d, here is another integer: %i, here is a character: %c here is an unsigned int: %u\n"
+			"here is a string: %s, here is a lowercase hexadecimal: %x, here is an uppercase hexadecimal: %X,\n"
+			"here is a pointer address %p\n",
+			d, i, c, u, s, x, X, p);
+}

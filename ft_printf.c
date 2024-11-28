@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/27 10:43:36 by msuokas           #+#    #+#             */
+/*   Updated: 2024/11/28 15:34:23 by msuokas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int	ft_format(va_list *args, const char format)
+static int	ft_format(va_list *args, const char format)
 {
 	int	total_length;
 
@@ -22,29 +34,42 @@ int	ft_format(va_list *args, const char format)
 		total_length += ft_hex(va_arg(*args, unsigned int), format);
 	else if (format == 'p')
 		total_length += ft_write_ptr(va_arg(*args, unsigned long long));
+	else
+		write(1, "%", 1);
 	return (total_length);
+}
+int	skip_spaces(const char *str, int i)
+{
+	while (str[i] == ' ')
+		i++;
+	return (i);
 }
 
 int	ft_printf(const char *str, ...)
 {
-	int	i;
-	int	total_length;
+	int		i;
+	int		fail_check;
+	int		total_length;
 	va_list	args;
 
 	i = 0;
+	fail_check = 0;
 	total_length = 0;
 	va_start(args, str);
-	while (str[i] != '\0')
+	while (str[i] != '\0' && fail_check > -1)
 	{
+		fail_check = 0;
 		if (str[i] == '%' && str[i + 1] != '\0')
-			total_length += ft_format(&args, str[++i]);
-		else
 		{
-			write (1, &str[i], 1);
-			total_length++;
+			fail_check += ft_format(&args, str[++i]);
+			total_length += fail_check;
 		}
+		else
+			total_length += write (1, &str[i], 1);
 		i++;
 	}
 	va_end(args);
-	return(total_length);
+	if (fail_check == -1)
+		return (-1);
+	return (total_length);
 }

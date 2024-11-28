@@ -6,13 +6,13 @@
 /*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:20:48 by msuokas           #+#    #+#             */
-/*   Updated: 2024/11/20 09:38:37 by msuokas          ###   ########.fr       */
+/*   Updated: 2024/11/28 13:09:01 by msuokas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	count_length(unsigned int n)
+int	count_length(unsigned int n)
 {
 	int	i;
 

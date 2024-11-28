@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_write_ptr.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/27 10:44:03 by msuokas           #+#    #+#             */
+/*   Updated: 2024/11/28 14:08:24 by msuokas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_ptr_len(uintptr_t n)
@@ -12,32 +24,52 @@ int	ft_ptr_len(uintptr_t n)
 	}
 	return (len);
 }
-void	ft_put_ptr(uintptr_t n)
+
+int	ft_put_ptr(uintptr_t n)
 {
+	int result;
+
+	result = 0;
 	if (n >= 16)
 	{
-		ft_put_ptr(n / 16);
-		ft_put_ptr(n % 16);
+		result = ft_put_ptr(n / 16);
+		if (result == -1)
+			return (-1);
+		result = ft_put_ptr(n % 16);
+		if (result == -1)
+			return (-1);
 	}
 	else
 	{
 		if (n <= 9)
-			ft_write_char(n + '0');
+			result = ft_write_char(n + '0');
 		else
-			ft_write_char(n - 10 + 'a');
+			result = ft_write_char(n - 10 + 'a');
+		if (result == -1)
+			return (-1);
 	}
+	return (0);
 }
-int	ft_write_ptr(unsigned long long ptr)
+
+int	ft_write_ptr(uintptr_t ptr)
 {
-	int len;
+	int	len;
 
 	len = 0;
-	len += write(1, "0x", 2);
 	if (ptr == 0)
-		len += write(1, "0", 1);
+	{
+		if (ft_write_string("(nil)") == -1)
+			return (-1);
+		return (5);
+	}
 	else
 	{
+		if (ft_write_string("0x") == -1)
+			return (-1);
+		len += 2;
 		ft_put_ptr(ptr);
+		if (ft_ptr_len(ptr) == -1)
+			return (-1);
 		len += ft_ptr_len(ptr);
 	}
 	return (len);
