@@ -51,26 +51,21 @@ int	ft_put_ptr(uintptr_t n)
 	return (0);
 }
 
-int	ft_write_ptr(uintptr_t ptr)
-{
-	int	len;
+int ft_write_ptr(uintptr_t ptr) {
+	int len;
 
-	len = 0;
 	if (ptr == 0)
 	{
 		if (ft_write_string("(nil)") == -1)
 			return (-1);
 		return (5);
-	}
-	else
+	} else
 	{
 		if (ft_write_string("0x") == -1)
 			return (-1);
-		len += 2;
-		ft_put_ptr(ptr);
-		if (ft_ptr_len(ptr) == -1)
+		if (ft_put_ptr(ptr) == -1)
 			return (-1);
-		len += ft_ptr_len(ptr);
+		len = ft_ptr_len(ptr) + 2;
 	}
-	return (len);
+	return len;
 }
