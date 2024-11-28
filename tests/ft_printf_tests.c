@@ -36,17 +36,20 @@ int	main(void)
 	printf("printf d:\n %i %i %i %i %i\n", -1, 0, INT_MIN, INT_MAX, 010);
 	ft_printf("ft_printf d:\n %i %i %i %i %i\n", -1, 0, INT_MIN, INT_MAX, 010);
 
-	printf("printf u:\n %u %u %u %u\n", -1, -1000, 010, INT_MIN);
-	ft_printf("ft_printf u:\n %u %u %u %u\n", -1, -1000, 010, INT_MIN);
+	printf("printf u:\n %u %u %u %u %u\n", -1, -1000, 010, INT_MIN, UINT_MAX);
+	ft_printf("ft_printf u:\n %u %u %u %u %u\n", -1, -1000, 010, INT_MIN, UINT_MAX);
 
-	printf("printf s\n: %s %s\n", "Hello", "1234");
-	ft_printf("ft_printf s\n: %s %s\n", "Hello", "1234");
+	printf("printf s\n: %s %s %s\n", "Hello", "1234", "");
+	ft_printf("ft_printf s\n: %s %s %s\n", "Hello", "1234", "");
 
-	printf("printf x:\n %x %x %x %x %x\n", 123456789, 123, -123, -3, 0);
-	ft_printf("ft_printf x:\n %x %x %x %x %x\n", 123456789, 123, -123, -3, 0);
+	printf("printf x:\n %x %x %x %x %x %x %x\n", 123456789, 123, -123, -1, 0, INT_MIN, UINT_MAX);
+	ft_printf("ft_printf x:\n %x %x %x %x %x %x %x\n", 123456789, 123, -123, -1, 0, INT_MIN, UINT_MAX);
 
-	printf("printf X:\n %X %X %X %X %X\n", 123456789, 123, -123, -3, 0);
-	ft_printf("ft_printf X:\n %X %X %X %X %X\n", 123456789, 123, -123, -3, 0);
+	printf("printf X:\n %X %X %X %X %X %X %X\n", 123456789, 123, -123, -1, 0, INT_MIN, UINT_MAX);
+	ft_printf("ft_printf X:\n %X %X %X %X %X %X %X\n", 123456789, 123, -123, -1, 0, INT_MIN, UINT_MAX);
+
+	printf("printf zero case:\n%d %i %x %X %u %p\n", 0, 0, 0, 0, 0, (void *)0);
+	ft_printf("ft_printf zero case:\n%d %i %x %X %u %p\n", 0, 0, 0, 0, 0, (void *)0);
 
 	printf("printf p addressess:\n %p %p\n", add, ptr);
 	ft_printf("ft_printf p addressess:\n %p %p\n", add, ptr);
