@@ -50,7 +50,7 @@ int	ft_put_hex(unsigned int n, const char format)
 		if (result == -1)
 			return (-1);
 	}
-	return (1);
+	return (0);
 }
 int	ft_hex(unsigned int n, const char format)
 {
