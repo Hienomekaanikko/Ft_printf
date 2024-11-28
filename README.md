@@ -1,6 +1,7 @@
 # 🖨️ Ft_printf
 
 Ft_printf is like a lite version of printf in C. The idea was to replicate the behaviour of standard printf as closly as possible, except for buffer management.
+Tests can be ran by first typing "make" inside main directory, and then typing "make test" inside the "tests" folder.
 
 ## 📊 Formats
 
