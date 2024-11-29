@@ -6,7 +6,7 @@
 /*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:43:56 by msuokas           #+#    #+#             */
-/*   Updated: 2024/11/28 15:02:11 by msuokas          ###   ########.fr       */
+/*   Updated: 2024/11/29 12:17:11 by msuokas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ int	ft_write_string(char *str)
 	i = 0;
 	if (!str)
 	{
-		write(1, "(null)", 6);
+		if (write(1, "(null)", 6) == -1)
+			return (-1);
 		return (6);
 	}
-	while (str[i] != '\0' && i > -1)
+	while (str[i] != '\0')
 	{
 		if (write(1, &str[i], 1) == -1)
 			return (-1);
@@ -30,7 +31,8 @@ int	ft_write_string(char *str)
 	}
 	return (i);
 }
+
 int	ft_write_char(int c)
 {
-	return(write(1, &c, 1));
+	return (write(1, &c, 1));
 }

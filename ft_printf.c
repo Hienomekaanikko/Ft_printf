@@ -6,7 +6,7 @@
 /*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:43:36 by msuokas           #+#    #+#             */
-/*   Updated: 2024/11/28 15:42:58 by msuokas          ###   ########.fr       */
+/*   Updated: 2024/11/29 11:54:07 by msuokas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,20 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	total_length = 0;
 	va_start(args, str);
-	while (str[i++] != '\0')
+	while (str[i] != '\0')
 	{
 		if (str[i] == '%' && str[i + 1] != '\0')
 		{
 			length = ft_format(&args, str[++i]);
 			if (length == -1)
 			{
-				va_end(args);
-				return (-1);
+				return (va_end(args), -1);
 			}
 			total_length += length;
 		}
 		else
 			total_length += write (1, &str[i], 1);
+		i++;
 	}
 	va_end(args);
 	return (total_length);

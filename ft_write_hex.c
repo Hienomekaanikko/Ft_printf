@@ -6,7 +6,7 @@
 /*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:43:58 by msuokas           #+#    #+#             */
-/*   Updated: 2024/11/28 14:32:14 by msuokas          ###   ########.fr       */
+/*   Updated: 2024/11/29 10:55:18 by msuokas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	ft_put_hex(unsigned int n, const char format)
 	}
 	return (0);
 }
+
 int	ft_hex(unsigned int n, const char format)
 {
 	if (ft_put_hex(n, format) == -1)

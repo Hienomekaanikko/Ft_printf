@@ -6,7 +6,7 @@
 /*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:44:03 by msuokas           #+#    #+#             */
-/*   Updated: 2024/11/28 16:03:55 by msuokas          ###   ########.fr       */
+/*   Updated: 2024/11/29 10:56:30 by msuokas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_ptr_len(uintptr_t n)
 
 int	ft_put_ptr(uintptr_t n)
 {
-	int result;
+	int	result;
 
 	result = 0;
 	if (n >= 16)
@@ -51,16 +51,17 @@ int	ft_put_ptr(uintptr_t n)
 	return (0);
 }
 
-int ft_write_ptr(uintptr_t ptr) 
+int	ft_write_ptr(uintptr_t ptr)
 {
-	int len;
+	int	len;
 
 	if (ptr == 0)
 	{
 		if (ft_write_string("(nil)") == -1)
 			return (-1);
 		return (5);
-	} else
+	}
+	else
 	{
 		if (ft_write_string("0x") == -1)
 			return (-1);
@@ -68,5 +69,5 @@ int ft_write_ptr(uintptr_t ptr)
 			return (-1);
 		len = ft_ptr_len(ptr) + 2;
 	}
-	return len;
+	return (len);
 }
