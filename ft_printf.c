@@ -6,13 +6,13 @@
 /*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:43:36 by msuokas           #+#    #+#             */
-/*   Updated: 2024/11/29 11:54:07 by msuokas          ###   ########.fr       */
+/*   Updated: 2024/12/02 13:40:50 by msuokas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_format(va_list *args, const char format)
+int	ft_format(va_list *args, const char format)
 {
 	int	total_length;
 
@@ -31,8 +31,13 @@ static int	ft_format(va_list *args, const char format)
 		total_length += ft_hex(va_arg(*args, unsigned int), format);
 	else if (format == 'p')
 		total_length += ft_write_ptr(va_arg(*args, uintptr_t));
+	else if (format == '\0')
+		total_length -= 1;
 	else
+	{
 		total_length += write(1, "%", 1);
+		total_length += write(1, &format, 1);
+	}
 	return (total_length);
 }
 
@@ -48,7 +53,7 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (str[i] != '\0')
 	{
-		if (str[i] == '%' && str[i + 1] != '\0')
+		if (str[i] == '%')
 		{
 			length = ft_format(&args, str[++i]);
 			if (length == -1)
