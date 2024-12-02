@@ -17,7 +17,6 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdint.h>
-# include <limits.h>
 
 char	*ft_itoa(int n);
 char	*ft_utoa(unsigned int n);
