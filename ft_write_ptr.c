@@ -6,7 +6,7 @@
 /*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:44:03 by msuokas           #+#    #+#             */
-/*   Updated: 2024/11/29 10:56:30 by msuokas          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:38:52 by msuokas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,19 @@ int	ft_put_ptr(uintptr_t n)
 {
 	int	result;
 
-	result = 0;
 	if (n >= 16)
 	{
 		result = ft_put_ptr(n / 16);
 		if (result == -1)
 			return (-1);
-		result = ft_put_ptr(n % 16);
-		if (result == -1)
-			return (-1);
+		return (ft_put_ptr(n % 16));
 	}
 	else
 	{
 		if (n <= 9)
-			result = ft_write_char(n + '0');
+			return (ft_write_char(n + '0'));
 		else
-			result = ft_write_char(n - 10 + 'a');
-		if (result == -1)
-			return (-1);
+			return (ft_write_char(n - 10 + 'a'));
 	}
 	return (0);
 }

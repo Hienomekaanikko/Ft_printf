@@ -6,7 +6,7 @@
 /*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:43:58 by msuokas           #+#    #+#             */
-/*   Updated: 2024/11/29 10:55:18 by msuokas          ###   ########.fr       */
+/*   Updated: 2024/12/05 09:52:09 by msuokas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,16 @@ int	ft_put_hex(unsigned int n, const char format)
 		result = ft_put_hex(n / 16, format);
 		if (result == -1)
 			return (-1);
-		result = ft_put_hex(n % 16, format);
-		if (result == -1)
-			return (-1);
+		return (ft_put_hex(n % 16, format));
 	}
 	else
 	{
 		if (n <= 9)
-			result = ft_write_char(n + '0');
+			return (ft_write_char(n + '0'));
 		else if (format == 'x')
-			result = ft_write_char(n - 10 + 'a');
+			return (ft_write_char(n - 10 + 'a'));
 		else if (format == 'X')
-			result = ft_write_char(n - 10 + 'A');
-		if (result == -1)
-			return (-1);
+			return (ft_write_char(n - 10 + 'A'));
 	}
 	return (0);
 }

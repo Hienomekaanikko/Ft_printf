@@ -1,59 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_nbrs.c                                    :+:      :+:    :+:   */
+/*   ft_write_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msuokas <msuokas@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 10:44:00 by msuokas           #+#    #+#             */
-/*   Updated: 2024/12/05 10:15:39 by msuokas          ###   ########.fr       */
+/*   Created: 2024/11/27 10:43:56 by msuokas           #+#    #+#             */
+/*   Updated: 2024/12/04 10:47:05 by msuokas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_write_int(int n)
+int	ft_write_string(char *str)
 {
-	int		i;
-	char	*nbr;
+	int	i;
 
 	i = 0;
-	if (n == -2147483648)
+	if (!str)
 	{
-		if (write(1, "-2147483648", 11) == -1)
+		if (write(1, "(null)", 6) == -1)
 			return (-1);
-		return (11);
+		return (6);
 	}
-	nbr = ft_itoa(n);
-	while (nbr[i] != '\0')
+	while (str[i] != '\0')
 	{
-		if (write(1, &nbr[i], 1) == -1)
-		{
-			i = -1;
-			break ;
-		}
+		if (write(1, &str[i], 1) == -1)
+			return (-1);
 		i++;
 	}
-	free (nbr);
 	return (i);
 }
 
-int	ft_write_unsigned_int(unsigned int n)
+int	ft_write_char(int c)
 {
-	int				i;
-	char			*nbr;
-
-	i = 0;
-	nbr = ft_utoa(n);
-	while (nbr[i] != '\0')
-	{
-		if (write(1, &nbr[i], 1) == -1)
-		{
-			i = -1;
-			break ;
-		}
-		i++;
-	}
-	free (nbr);
-	return (i);
+	return (write(1, &c, 1));
 }

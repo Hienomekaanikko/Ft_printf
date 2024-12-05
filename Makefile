@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRC = ft_write_chr.c ft_printf.c ft_itoa.c ft_write_nbrs.c ft_utoa.c ft_write_hex.c ft_write_ptr.c
+SRC = ft_write_str.c ft_printf.c ft_itoa.c ft_write_nbrs.c ft_utoa.c ft_write_hex.c ft_write_ptr.c
 OBJS = $(SRC:.c=.o)
 NAME = libftprintf.a
 
